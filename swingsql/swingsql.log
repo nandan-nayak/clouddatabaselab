@@ -1,0 +1,70 @@
+2020-01-01 16:45:07 INFO  Brew:90 - Default Database  connection successfull
+2020-01-01 16:45:07 INFO  Brew:147 - database Not Found ... creating new database
+2020-01-01 16:45:07 INFO  Brew:174 - successfully connected to database
+2020-01-01 16:45:07 INFO  Brew:218 - Table company not found .... creating a new table
+2020-01-01 16:45:07 INFO  Brew:226 - new company table created
+2020-01-01 16:45:26 INFO  Brew:266 - Inserted Data Successfully
+2020-01-01 16:45:48 INFO  Brew:266 - Inserted Data Successfully
+2020-01-01 16:46:04 INFO  Brew:332 - Updated Successfull
+2020-01-01 16:46:15 INFO  Brew:467 - company found and deleted
+2020-01-01 16:46:19 WARN  Brew:479 - ERROR IN DELETING...
+2020-01-01 16:46:19 WARN  Brew:480 - Illegal operation on empty result set.
+2020-01-01 16:46:23 INFO  Brew:467 - company found and deleted
+2020-01-01 16:46:59 INFO  Brew:90 - Default Database  connection successfull
+2020-01-01 16:46:59 INFO  Brew:137 - database is already present .... Connecting to database...
+2020-01-01 16:46:59 INFO  Brew:174 - successfully connected to database
+2020-01-01 16:46:59 WARN  Brew:236 - ERROR in Creating Table
+2020-01-01 16:46:59 WARN  Brew:237 - Could not find stored procedure 'show'.
+2020-01-01 16:51:01 INFO  Brew:90 - Default Database  connection successfull
+2020-01-01 16:51:02 INFO  Brew:137 - database is already present .... Connecting to database...
+2020-01-01 16:51:02 INFO  Brew:174 - successfully connected to database
+2020-01-01 16:51:02 INFO  Brew:225 - Table company not found .... creating a new table
+2020-01-01 16:51:02 WARN  Brew:243 - ERROR in Creating Table
+2020-01-01 16:51:02 WARN  Brew:244 - There is already an object named 'company' in the database.
+2020-01-01 16:52:27 INFO  Brew:90 - Default Database  connection successfull
+2020-01-01 16:52:27 INFO  Brew:137 - database is already present .... Connecting to database...
+2020-01-01 16:52:27 INFO  Brew:174 - successfully connected to database
+2020-01-01 16:52:27 INFO  Brew:225 - Table company not found .... creating a new table
+2020-01-01 16:52:27 INFO  Brew:233 - new company table created
+2020-01-01 16:52:36 INFO  Brew:90 - Default Database  connection successfull
+2020-01-01 16:52:36 INFO  Brew:137 - database is already present .... Connecting to database...
+2020-01-01 16:52:36 INFO  Brew:174 - successfully connected to database
+2020-01-01 16:52:36 INFO  Brew:225 - Table company not found .... creating a new table
+2020-01-01 16:52:36 WARN  Brew:243 - ERROR in Creating Table
+2020-01-01 16:52:36 WARN  Brew:244 - There is already an object named 'company' in the database.
+2020-01-01 16:54:04 INFO  Brew:90 - Default Database  connection successfull
+2020-01-01 16:54:04 INFO  Brew:137 - database is already present .... Connecting to database...
+2020-01-01 16:54:04 INFO  Brew:174 - successfully connected to database
+2020-01-01 16:54:04 INFO  Brew:225 - Table company not found .... creating a new table
+2020-01-01 16:54:04 WARN  Brew:243 - ERROR in Creating Table
+2020-01-01 16:54:04 WARN  Brew:244 - There is already an object named 'company' in the database.
+2020-01-01 16:56:08 INFO  Brew:90 - Default Database  connection successfull
+2020-01-01 16:56:08 INFO  Brew:137 - database is already present .... Connecting to database...
+2020-01-01 16:56:08 INFO  Brew:174 - successfully connected to database
+2020-01-01 16:56:08 INFO  Brew:225 - Table company not found .... creating a new table
+2020-01-01 16:56:08 INFO  Brew:233 - new company table created
+2020-01-01 16:56:16 INFO  Brew:90 - Default Database  connection successfull
+2020-01-01 16:56:16 INFO  Brew:137 - database is already present .... Connecting to database...
+2020-01-01 16:56:16 INFO  Brew:174 - successfully connected to database
+2020-01-01 16:56:16 INFO  Brew:210 - company table already found .... using same table 
+2020-01-01 16:56:35 INFO  Brew:302 - Inserted Data Successfully
+2020-01-01 16:56:40 WARN  Brew:437 - ERROR IN DISPLAY ..... 
+2020-01-01 16:56:40 WARN  Brew:438 - The requested operation is not supported on forward only result sets.
+2020-01-01 16:56:44 WARN  Brew:437 - ERROR IN DISPLAY ..... 
+2020-01-01 16:56:44 WARN  Brew:438 - The requested operation is not supported on forward only result sets.
+2020-01-01 16:56:54 INFO  Brew:369 - Updated Successfull
+2020-01-01 16:56:59 WARN  Brew:363 - Failed to update the information...... company not found 
+2020-01-01 16:57:05 INFO  Brew:508 - company found and deleted
+2020-01-01 16:57:08 WARN  Brew:520 - ERROR IN DELETING...
+2020-01-01 16:57:08 WARN  Brew:521 - The result set has no current row.
+2020-01-01 17:14:55 INFO  Brew:90 - Default Database  connection successfull
+2020-01-01 17:14:55 INFO  Brew:137 - database is already present .... Connecting to database...
+2020-01-01 17:14:55 INFO  Brew:174 - successfully connected to database
+2020-01-01 17:14:55 INFO  Brew:210 - company table already found .... using same table 
+2020-01-01 17:15:29 WARN  Brew:437 - ERROR IN DISPLAY ..... 
+2020-01-01 17:15:29 WARN  Brew:438 - The requested operation is not supported on forward only result sets.
+2020-01-01 17:15:46 INFO  Brew:302 - Inserted Data Successfully
+2020-01-01 17:15:55 WARN  Brew:437 - ERROR IN DISPLAY ..... 
+2020-01-01 17:15:55 WARN  Brew:438 - The requested operation is not supported on forward only result sets.
+2020-01-01 17:16:00 WARN  Brew:437 - ERROR IN DISPLAY ..... 
+2020-01-01 17:16:00 WARN  Brew:438 - The requested operation is not supported on forward only result sets.
