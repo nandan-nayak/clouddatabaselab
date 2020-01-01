@@ -1,2 +1,6 @@
 create LOG file with file extention .log 
 specify the file created in the log4j.properties which is present in src/
+
+
+
+to switch between mysql and mssql change the variable DB and line 802 as "mysql" or "mssql"
