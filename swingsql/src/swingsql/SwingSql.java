@@ -20,26 +20,27 @@ abstract class SqlDemo
 
 	Connection conn = null;
 	 Statement stmt = null;
+	 PreparedStatement pstmt=null;
 	String sql;
 	ResultSet resultSet;
 	int result;
-		void connect(String JDBC_DRIVER , String DB_URL,String USER,String PASS,String DB_NAME) {}
-	void createTable(String name){}
+		void connect(String USER,String PASS,String DB_NAME,String DB) {}
+	void createTable(String name,String DB){}
 	
-	void insertData(String name,float share_value) 
+	void insertData(String name,float share_value,String DB) 
 	{
 	  
 	}
-abstract ResultSet display(int id) ;
-void updateData(int id,float share_value) {}
-	void deleteData(int id) {}
+abstract ResultSet display(int id,String DB) ;
+void updateData(int id,float share_value,String DB) {}
+	void deleteData(int id,String DB) {}
 	
 }
 
 
 class Brew extends  SqlDemo
 {
-	
+	 Logger logger = Logger.getLogger(Brew.class.getName());
 	
 	Brew()
 	{
@@ -51,40 +52,91 @@ class Brew extends  SqlDemo
 	
 	
 	@Override
-	 void connect(String JDBC_DRIVER , String DB_URL,String USER,String PASS,String DB_NAME) {
+	 void connect(String USER,String PASS,String DB_NAME,String DB) {
 	
-		ResultSet rs1;int flag=0;String db;
-		 Logger logger = Logger.getLogger(Brew.class.getName());
-		logger.info("database  connection successfull");
+		ResultSet rs1;int flag=0;String connectionstring,classname, createdatabasequery,showdatabasequery;
+		if(DB=="mysql")
+		{
+			connectionstring="jdbc:mysql://localhost:3307/test";
+			classname="com.mysql.jdbc.Driver";
+			showdatabasequery="show databases";
+		}
+		else
+		{
+			connectionstring="jdbc:sqlserver://localhost;";
+			classname="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+			showdatabasequery="select * from sys.databases  ";
+			//showdatabasequery="show databases"
+		}
+		createdatabasequery="create database "+DB_NAME;
+		
 		try {
 			
 			
 			
 			
-			   Class.forName(JDBC_DRIVER);
-			   conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/mysql",USER,PASS);
+			 //  Class.forName(JDBC_DRIVER);
+			  Class.forName(classname);
+			   
+			   
+			
+			   //conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/mysql",USER,PASS);
+			  
+			  
+			  //this connection works for both database
+			  conn = DriverManager.getConnection(connectionstring,USER,PASS);
+			   
+			   
+			   logger.info("Default Database  connection successfull");
 			    stmt = conn.createStatement();
-			   rs1 = stmt.executeQuery("Show Databases");
-		      System.out.println("List of databases: ");
+			   rs1 = stmt.executeQuery(showdatabasequery);
+		      
+		      //logger.info("List of databases:");
 		      while(rs1.next()) {
-		    	  System.out.println(rs1.getString(1));
-		         if(rs1.getString(1).compareTo("sharemarket")==0)
+		    	  //logger.info(rs1.getString(1));
+		         if(rs1.getString(1).compareTo(DB_NAME)==0)
 		         {
 		        	
 		        	 flag=1;
-		        	// System.out.println("loop is "+flag);
 		        	 break; 
 		         }
-		        // System.out.println();
-		      }
-			//  System.out.println("flag is "+flag);
-
-
+		        }
+		
+		      
+				
+			   
 			  if(flag==1)
 			  {
 				  
-			    System.out.println(" database is already present .... Connecting to database...");
-			    conn = DriverManager.getConnection(DB_URL,USER,PASS);
+				  
+				  
+				  if(DB=="mysql")
+					{
+						connectionstring="jdbc:mysql://localhost:3307/"+DB_NAME;
+						//System.out.println(connectionstring);
+						//classname="com.mysql.jdbc.Driver";
+						 conn = DriverManager.getConnection(connectionstring,USER,PASS);
+						 
+						stmt=conn.createStatement();
+						
+					}
+					else
+					{
+						connectionstring="jdbc:sqlserver://localhost;databaseName="+DB_NAME;
+						stmt=conn.createStatement();
+						
+					//	classname="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+					}
+				  
+				  
+				  
+				  
+				  
+			   // System.out.println(" database is already present .... Connecting to database...");
+				  
+			    logger.info("database is already present .... Connecting to database...");
+			    
+			    conn = DriverManager.getConnection(connectionstring,USER,PASS);
 			    stmt = conn.createStatement();
 			
 
@@ -92,62 +144,95 @@ class Brew extends  SqlDemo
 			  else
 			  {
 				  int res;
+				  logger.info("database Not Found ... creating new database");
 				  
-				  res=stmt.executeUpdate("create database sharemarket");
-				  rs1=stmt.executeQuery("use sharemarket");
-				  System.out.println("database not found and created");
-				  conn = DriverManager.getConnection(DB_URL,USER,PASS);
+				
+				  res=stmt.executeUpdate(createdatabasequery);
+				  rs1=stmt.executeQuery("use "+DB_NAME);
+				 // System.out.println("database not found and created");
+				  
+				  conn = DriverManager.getConnection(connectionstring,USER,PASS);
 				    stmt = conn.createStatement();
-			  }
+				    rs1.close();
+			    
+					//  pstmt=conn.prepareStatement(createdatabasequery);
+					 // pstmt.executeQuery();
+				  
+				  
+				  }
 			
-		}catch(Exception e) {e.printStackTrace();}
+		}catch(Exception e) {
+		logger.warn("ERROR DURING CREATING DATABASE...");
+		logger.warn(e.getMessage());
+			//e.printStackTrace();
+			
+		}
+	
 		
 		
-		System.out.println("successfully connected to database");
-		
+		//System.out.println("successfully connected to database");
+		logger.info("successfully connected to database");
 	
 	
 	}
 	
 	
 	@Override
-	void createTable(String name)
+	void createTable(String name,String DB)
 	{
 		
-		ResultSet rs1;int flag=0;
+		ResultSet rs1;int flag=0;String  sql;
 		try
 		{
-		   DatabaseMetaData meta = (DatabaseMetaData) conn.getMetaData();
-		   
-		     rs1 = meta.getTables(null, null, null, new String[] {
-		         "TABLE"
-		      });
-		     
-		
+			if(DB.compareTo("mysql")==0)
+			{
+		  sql="show tables";
+		  rs1=stmt.executeQuery(sql);
+			}
+			else
+			{
+				sql="select * from sys.tables";
+				  rs1=stmt.executeQuery(sql);
+			}
 		     
 		     
 		     
 		     
 		     while (rs1.next()) {
-		         String tblName = rs1.getString("TABLE_NAME");
-		         //System.out.println(tblName);
-		         if(tblName.compareTo(name)==0)
+		    	 System.out.println(rs1.getString(1));
+		         if(rs1.getString(1).compareTo(name)==0)
 		         {
 		        	//String  sql="drop table "+name;
 		        	// stmt.executeUpdate(sql);
 		        	 flag=1;
-		        	 System.out.println(name+" table already found .... using same table ");
+		        	// System.out.println(name+" table already found .... using same table ");
+		        	 
+		        	 logger.info(name+" table already found .... using same table ");
+		        		
 		         }
 		         
 		      }
 		     if(flag==0)
 		     {
-		     String  sql = "create table company(id int not null auto_increment,name varchar(20),sharevalue float, primary key(id))";
-			    //sql="show tables";
-		     System.out.println("Table "+name+ " not found .... creating a new table");
+		    	 if(DB.compareTo("mysql")==0)
+		    		 sql = "create table company(id int not null auto_increment,name varchar(20),sharevalue float, primary key(id))";
+		    	 else
+		    		 sql = "create table company(id int not null identity,name varchar(20),sharevalue float, primary key(id))";
+		    	 
+		    	 //sql="show tables";
+		   //  System.out.println("Table "+name+ " not found .... creating a new table");
+		     
+		     logger.info("Table "+name+ " not found .... creating a new table");
+	        	
+		     
+		     
 		     //System.out.println("staement is "+stmt);
 			    result = stmt.executeUpdate(sql);
-			    System.out.println("new "+name+" table created");
+			    //System.out.println("new "+name+" table created");
+			    
+			    logger.info("new "+name+" table created");
+		        
+			    
 		     
 		     } 
 		     
@@ -155,7 +240,8 @@ class Brew extends  SqlDemo
 			
 			
 			//e.printStackTrace();
-		System.out.println("========= table creation failed =========");	
+	logger.warn("ERROR in Creating Table");
+	logger.warn(e.getMessage());
 		
 		}
 		
@@ -170,60 +256,192 @@ class Brew extends  SqlDemo
 	
 	
 	@Override
-	void insertData(String name,float share_value) 
+	void insertData(String name,float share_value,String DB) 
 	{
+		
+		if(DB=="mysql")
+		{
+			
 	    sql="insert into company(name,sharevalue) values('"+name+"',"+share_value+") ";
 	    
+	    
 	    try {
-	    
-	    result=stmt.executeUpdate(sql);
+		    
+		    result=stmt.executeUpdate(sql);
 
-		//System.out.println("inserted successfully ");
-		JOptionPane.showMessageDialog(null, "inserted successfully");
-		
-	    }catch(SQLException e) {
-	    	//e.printStackTrace();
-	    	JOptionPane.showMessageDialog(null, "insertion failed");
+			//System.out.println("inserted successfully ");
+		    logger.info("Inserted Data Successfully");
+			JOptionPane.showMessageDialog(null, "inserted successfully");
+			
+		    }catch(SQLException e) {
+		    	//e.printStackTrace();
+		    	logger.warn("Data Insertion Failed");
+		    	logger.warn(e.getMessage());
+		    	JOptionPane.showMessageDialog(null, "insertion failed");
+		    
+		    }
 	    
-	    }
+	    
+	    
+		}
+		
+		else
+		{
+			sql="insert into company(name,sharevalue) values (?,?) ";
+			
+			
+			
+			 try {
+				    pstmt=conn.prepareStatement(sql);
+				    //result=stmt.executeUpdate(sql);
+				    pstmt.setString(1,name);
+				    pstmt.setFloat(2, share_value);
+				    pstmt.executeUpdate();
+				    
+					//System.out.println("inserted successfully ");
+				    logger.info("Inserted Data Successfully");
+					JOptionPane.showMessageDialog(null, "inserted successfully");
+					
+				    }catch(SQLException e) {
+				    	//e.printStackTrace();
+				    	logger.warn("Data Insertion Failed");
+				    	logger.warn(e.getMessage());
+				    	JOptionPane.showMessageDialog(null, "insertion failed");
+				    
+				    }
+			
+			
+			
+			
+		}
+	   
 	}
 	
 	
 	
 	@Override
-	void updateData(int id,float share_value) 
+	void updateData(int id,float share_value,String DB) 
 	{
+		
+		if(DB=="mysql")
+		{
 		try {
 			sql="update company set sharevalue="+share_value+" where id= "+id;
 		result=stmt.executeUpdate(sql);
 		if(result==0)
 		{
-			JOptionPane.showMessageDialog(null, "updation failed");
+			logger.warn("Failed to update the information...... company not found ");
+			JOptionPane.showMessageDialog(null, "updation failed.. company not found");
 				
 		}
 		else
+		{
+			logger.info("Updated Successfull");
 		JOptionPane.showMessageDialog(null, "updated successfully");
-		}catch(SQLException e) {
+		}	}catch(SQLException e) {
 			
-			e.printStackTrace();
+			//e.printStackTrace();
+			logger.warn("ERROR IN UPDATION....Updated failed");
+			logger.warn(e.getMessage());
 			JOptionPane.showMessageDialog(null, "updation failed");
 		
 		}
-	}
+		
+		}
+		
+		else
+		{
+			
+			try {
+				sql="update company set sharevalue=? where id=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setFloat(1, share_value);
+			pstmt.setInt(2, id);
+			result=pstmt.executeUpdate();
+			if(result==0)
+			{
+				logger.warn("Failed to update the information...... company not found ");
+				JOptionPane.showMessageDialog(null, "updation failed.. company not found");
+					
+			}
+			else
+			{
+				logger.info("Updated Successfull");
+			JOptionPane.showMessageDialog(null, "updated successfully");
+			}	}catch(SQLException e) {
+				
+				//e.printStackTrace();
+				logger.warn("ERROR IN UPDATION....Updated failed");
+				logger.warn(e.getMessage());
+				JOptionPane.showMessageDialog(null, "updation failed");
+			
+			}
+			
+			}
+			
+			
+		
+		}
+	
 	
 	
 	@Override
-	ResultSet display(int id) 
+	ResultSet display(int id,String DB) 
 	{
 		
 		
 		ResultSet result=null;
-		String sql="select * from company where id="+id;
+		
+		//System.out.println(DB);
+		if(DB.compareTo("mysql")==0)
+		{
+		
+		
+		sql="select * from company where id="+id;
 try
 {
 		
 		 result=stmt.executeQuery(sql);
-	}catch(Exception e) {e.printStackTrace();}		
+		 //if(result.next()==false)logger.info("nothing to display");
+		 //result.previous();
+	}catch(Exception e) {
+	logger.warn("ERROR IN DISPLAY ..... ");
+	logger.warn(e.getMessage());
+		//e.printStackTrace();
+		
+	}	
+
+		}
+		
+		
+		
+		else
+		{
+			
+			
+
+			sql="select * from company where id=?";
+	try
+	{
+			
+			 pstmt=conn.prepareStatement(sql);
+			
+			 pstmt.setInt(1, id);
+			 
+			 result=pstmt.executeQuery();
+			 System.out.println("executed");
+			 if(result.first()==false)logger.info("nothing to display");
+			 //if(result.next()==false)logger.info("nothing to display");
+			 //result.first();
+		}catch(Exception e) {
+		logger.warn("ERROR IN DISPLAY ..... ");
+		logger.warn(e.getMessage());
+			//e.printStackTrace();
+			
+		}	
+
+			
+		}
 
 return result;
 	
@@ -236,9 +454,13 @@ return result;
 	
 	
 	@Override
-	void deleteData(int id)
+	void deleteData(int id,String DB)
 	{
+		int result;
 		
+		if(DB=="mysql")
+		{
+			
 		sql="select * from company where id="+id;
 		try
 		{
@@ -247,8 +469,9 @@ return result;
 		//resultSet.next();
 		//Brew b=new Brew();
 		resultSet.next();
-		
-		System.out.println("company found and deleted");
+		resultSet.getString(1);
+		//System.out.println("company found and deleted");
+		logger.info("company found and deleted");
 			sql="delete from company where id="+id;
 			result=stmt.executeUpdate(sql);
 			JOptionPane.showMessageDialog(null, "deleted successfully");
@@ -260,11 +483,47 @@ return result;
 			
 			//e.printStackTrace();
 			
-		
+		logger.warn("ERROR IN DELETING...");
+		logger.warn(e.getMessage());
 			JOptionPane.showMessageDialog(null, "deletion failed ");
 		
 		}
 		
+	}
+		
+		else
+		{
+			
+		sql="select * from company where id=?";
+		try
+		{
+		pstmt=conn.prepareStatement(sql);
+		pstmt.setInt(1, id);
+	resultSet=pstmt.executeQuery();
+		//resultSet.next();
+		//Brew b=new Brew();
+		resultSet.next();
+		resultSet.getString(1);
+		//System.out.println("company found and deleted");
+		logger.info("company found and deleted");
+			sql="delete from company where id="+id;
+			result=stmt.executeUpdate(sql);
+			JOptionPane.showMessageDialog(null, "deleted successfully");
+		
+		
+		
+		
+		}catch(SQLException e) {
+			
+			//e.printStackTrace();
+			
+		logger.warn("ERROR IN DELETING...");
+		logger.warn(e.getMessage());
+			JOptionPane.showMessageDialog(null, "deletion failed ");
+		
+		}
+		
+	}
 	}
 	
 	
@@ -278,9 +537,10 @@ class Update extends JFrame implements ActionListener
 	static JTextField t1;
 	 static JTextField t2;
 	
-	 
-	 void generate()
+	 static String DB;
+	 void generate(String DB)
 	 {
+		 this.DB=DB;
 		 Update u=new Update();
 		JFrame f=new JFrame(); 
 	JLabel l1=new JLabel("enter id");
@@ -320,7 +580,7 @@ class Update extends JFrame implements ActionListener
 		if(s.equals("Done"))
 		{
 		
-			SwingSql.b.updateData(Integer.parseInt(t1.getText()),Float.parseFloat(t2.getText()));
+			SwingSql.b.updateData(Integer.parseInt(t1.getText()),Float.parseFloat(t2.getText()),DB);
 
 			t1.setText("");
 			t2.setText("");
@@ -340,9 +600,10 @@ class Display extends JFrame implements ActionListener
 	static JButton b;
 	
 	static JLabel l1;
-	
-	void generate()
+	static String DB;
+	void generate(String DB)
 	{
+		this.DB=DB;
 		Display d=new Display();
 		t1=new JTextField();
 		ta=new JTextArea();
@@ -379,7 +640,8 @@ class Display extends JFrame implements ActionListener
 		if(s.equals("done")) {
 			
 			int id=Integer.parseInt(t1.getText());
-			rs=SwingSql.b.display(id);
+			//System.out.println("DB is "+DB);
+			rs=SwingSql.b.display(id,this.DB);
 		try {
 			
 			
@@ -387,6 +649,7 @@ class Display extends JFrame implements ActionListener
 			
 			if(rs.next()==false)
 			{
+				
 				JOptionPane.showMessageDialog(null, "nothing to display ");
 				
 			}
@@ -425,9 +688,10 @@ class Display extends JFrame implements ActionListener
 	 static JTextField t4;
 	 static JTextField t5;
 	
-	 
-	public void generate()
+	 static String DB;
+	public void generate(String DB)
 	{
+		this.DB=DB;
 		Insert i=new Insert();
 		JFrame jf=new JFrame();
 		JLabel l1=new JLabel("Company Name");
@@ -468,7 +732,7 @@ class Display extends JFrame implements ActionListener
 		{
 			
 			//System.out.println(t1.getText()+t2.getText()+t3.getText()+t4.getText()+t5.getText());
-			SwingSql.b.insertData(t1.getText(),Float.parseFloat(t2.getText()));
+			SwingSql.b.insertData(t1.getText(),Float.parseFloat(t2.getText()),DB);
 		//SwingSql.b.insertData("name"," email", 9090909," city", 1);
 		t1.setText("");t2.setText("");
 		
@@ -484,9 +748,10 @@ class Display extends JFrame implements ActionListener
 	 JLabel l1,l2;
 	static  JTextField t1;
 	 JButton b;
-	 
-	 void generate()
+	 static String DB;
+	 void generate(String DB)
 	 {
+		 this.DB=DB;
 		 l1=new JLabel("enter id to delete");
 		 JFrame jf=new JFrame();
 		 Delete d=new Delete();
@@ -515,7 +780,7 @@ class Display extends JFrame implements ActionListener
 		// System.out.println(t1.getText());
 		 if(a.equals("done"))
 		 {
-			SwingSql.b.deleteData(Integer.parseInt(t1.getText()));
+			SwingSql.b.deleteData(Integer.parseInt(t1.getText()),DB);
 			//System.out.println(SwingSql.b);	
 			 //SwingSql.b.insertData("name"," email", 9090909," city", 1);
 			t1.setText("");
@@ -534,8 +799,7 @@ public class SwingSql extends JFrame implements ActionListener {
 
 	
 	static Brew b=new Brew();
-	
-	
+	static String DB="mssql";	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		 //System.out.println(System.getProperty("user.dir"));
@@ -543,8 +807,8 @@ public class SwingSql extends JFrame implements ActionListener {
 		PropertyConfigurator.configure(log4jConfPath);
 		
 		SwingSql s=new SwingSql(); 
-		 String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-		 String DB_URL = "jdbc:mysql://localhost:3307/sharemarket?characterEncoding=latin1";
+		 //String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+		 //String DB_URL = "jdbc:mysql://localhost:3307/sharemarket?characterEncoding=latin1";
 
 		 String DB_NAME = "sharemarket";
 		 String USER = "root";
@@ -554,8 +818,8 @@ public class SwingSql extends JFrame implements ActionListener {
 		 int choice,id;
 		
 		//Scanner in=new Scanner(System.in);
-		b.connect(JDBC_DRIVER, DB_URL, USER, PASS,DB_NAME);
-		b.createTable("company");
+		b.connect( USER, PASS,DB_NAME,DB);
+		b.createTable("company",DB);
 		ResultSet re;
 		//re=b.display(1);
 		//try{while(re.next()) {}}catch(Exception e) {e.printStackTrace();}
@@ -606,10 +870,10 @@ public class SwingSql extends JFrame implements ActionListener {
 		String s = e.getActionCommand(); 
         if (s.equals("Insert")) { 
             // set the text of the label to the text of the field 
-            System.out.println("Insert");
+          //  System.out.println("Insert");
             
             Insert i=new Insert();
-            i.generate();
+            i.generate(DB);
             
             
             
@@ -617,19 +881,20 @@ public class SwingSql extends JFrame implements ActionListener {
         
         else if (s.equals("Delete")) { 
             // set the text of the label to the text of the field 
-        	 System.out.println("Delete"); 
+        	 //System.out.println("Delete"); 
         	 Delete d=new Delete();
-        	 d.generate();
+        	 d.generate(DB);
         } 
         else if(s.equals("Display")) {
        Display d=new Display();
-       d.generate();
+     //  System.out.println("the DB s"+DB);
+       d.generate(DB);
         }
         
         else if(s.contentEquals("Update"))
         {
         	Update u=new Update();
-        	u.generate();
+        	u.generate(DB);
         	
         }        
         
