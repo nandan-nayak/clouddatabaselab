@@ -281,8 +281,8 @@ font-size:25px;
         </div>
         <div class="content">
             <div style="height:15%;margin-top:-10%;">
-                <label>Enter Company ID</label>
-                <input type="number" id="displayid" required>
+                <label>Enter Company Name</label>
+                <input type="text" id="displayname" required>
             </div>
             <div style="height:100%;width:100%;background:white;margin-top:10%;">
 
@@ -337,8 +337,6 @@ font-size:25px;
         function my_javascript_function(a, b) {
             console.log(a + b)
         }
-
-
 
 
 
@@ -429,11 +427,11 @@ function deletedetails() {
 
 function displaydetails() {
 
-    var id = document.getElementById("displayid").value;
+    var name = document.getElementById("displayname").value;
     // var value = document.getElementById("modifyvalue").value;
     if (id != "") {
         console.log(name);
-        eel.display(id);
+        eel.display(name);
     }
     else {
         console.log("empty")
@@ -451,8 +449,32 @@ function displaydetails() {
 
 
 
+eel.expose(added);
+function added(message) {
+    alert(message);
+}
 
 
+
+
+
+eel.expose(deleted);
+function deleted(message) {
+    alert(message);
+}
+
+
+
+eel.expose(modified);
+function modified(message) {
+    alert(message);
+}
+
+
+eel.expose(display);
+function display(message) {
+    alert(message);
+}
 
     </script>
 
