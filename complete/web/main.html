@@ -1,0 +1,462 @@
+<!Doctype html>
+<html>
+<head>
+<style>
+
+    body, html {
+        height: 100%;
+        width:100%;
+        margin:0;
+    }
+
+
+.banner
+{
+height:100%;
+width:100%;
+
+}
+    .banner .img {
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        filter: blur(8px);
+        -webkit-filter: blur(8px);
+    }
+
+
+.options
+{
+height:100%;
+width:100%;
+
+}
+
+.options .add
+{
+background:rgba(0,0,0,0.1);
+height:30%;
+width:30%;
+float:left;
+margin-left:3%;
+margin-top:5%;
+
+
+}
+.options .modify
+{
+background:rgba(0,0,0,0.1);
+height:30%;
+width:30%;
+float:left;
+margin-left:3%;
+margin-top:5%;
+
+
+}
+
+.options .delete
+{
+background:rgba(0,0,0,0.1);
+height:30%;
+width:30%;
+
+float:left;
+margin-left:3%;
+margin-top:5%;
+
+}
+
+.options .display
+{
+background:rgba(0,0,0,0.1);
+
+height:30%;
+width:30%;
+
+float:left;
+margin-left:3%;
+margin-top:5%;
+
+}
+
+
+    .addinfo {
+        height: 100%;
+        width: 100%;
+        background: #092b45;
+        font-size: 40px;
+    }
+.addinfo .title
+{
+
+    height:10%;
+    margin-top:0%;
+    width:60%;
+    color : white;
+    
+    margin-left:30%;
+
+}
+
+.addinfo .content{
+
+
+    height:40%;
+    width:40%;
+    margin-left:30%;
+    margin-top:10%;
+    font-size:30px;
+    color:white;
+}
+
+    input {
+        height: 100%;
+        width: 40%;
+        float: right;
+        font-size: 30px;
+    }
+    label {
+        height: 100%;
+        float: left;
+    }
+    
+    h2 {
+        text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+        -webkit-transition: .2s all linear;
+    }
+    .banner .text {
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0, 70, 139,0.5); /* Black w/opacity/see-through */
+        color: white;
+        font-size:50px;
+        font-weight: bold;
+        border: 3px solid #f1f1f1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 80%;
+        padding: 20px;
+        text-align: center;
+    }
+
+.h2options
+{
+ text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+        -webkit-transition: .2s all linear;
+color:red;
+
+font-size:50px;
+background:rgba(0,200,0,0.5);
+text-align:center;
+}
+
+.button{
+
+        margin-top:10%;
+            background:green;
+width:50%;
+height:20%;
+border:none;
+color:white;
+font-size:25px;
+
+}
+
+</style>
+
+
+</head>
+<body>
+    <div class="banner">
+        <div class="text">
+            <h2>SHARE MARKET PORTAL</h2>
+        </div>
+            
+            <img src="images/1.jpg" id="img" class="img" />
+    </div>
+    <div class="options">
+        <a href="#add">
+            <div class="add">
+		<h1 class="h2options" >ADD</h1>
+            </div>
+        </a>
+        <a href="#delete">
+            <div class="delete">
+		<h1  class="h2options" >DELETE</h1>
+		</div>
+        </a>
+
+        <a href="#modify">
+            <div  class="modify">
+
+		<h1 class="h2options" >UPDATE</h1>
+			</div>
+        </a>
+
+
+
+        <a href="#display">
+            <div class="display">
+		<h1 class="h2options" >DISPLAY</h1>
+
+		</div>
+        </a>
+
+    </div>
+    <div class="addinfo" id="add">
+        <div class="title">
+            Add Company Details
+        </div>
+
+        <div class="content">
+	
+            <div style="height:15%;">
+                <label>Enter Company Name</label>
+                <input type="text" id="addcompanyname" />
+            </div>
+            <div style="margin-top:10%;height:15%;">
+
+                <label>Enter share value</label>
+                <input type="number" id="addsharevalue" />
+            </div>
+
+            <button  class="button" value="Submit" onclick="adddetails();">Submit</button>
+
+        </div>
+
+
+    </div>
+
+    <div class="addinfo" id="modify">
+        <div class="title">
+            Modify Details
+        </div>
+        <div class="content">
+            <div style="height:15%;">
+                <label>Enter Company ID</label>
+                <input type="number" id="modifyid" required/>
+            </div>
+            <div style="margin-top:10%;height:15%;">
+
+                <label>Enter share value</label>
+                <input type="number" id="modifyvalue" required/>
+            </div>
+
+            <button class="button" value="submit" onclick="modifydetails();">SUBMIT</button>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="addinfo" id="delete">
+        <div class="title">
+            Delete Company Details
+        </div>
+        <div class="content">
+            <div style="height:15%;">
+                <label>Enter Company ID</label>
+                <input type="number" id="deleteid" required>
+            </div>
+
+
+            <button class="button" value="submit" onclick="deletedetails();">SUBMIT</button>
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="addinfo" id="display">
+        <div class="title">
+           Display Company Details
+        </div>
+        <div class="content">
+            <div style="height:15%;margin-top:-10%;">
+                <label>Enter Company ID</label>
+                <input type="number" id="displayid" required>
+            </div>
+            <div style="height:100%;width:100%;background:white;margin-top:10%;">
+
+
+
+            </div>
+
+            <button class="button" value="submit" onclick="displaydetails();">SUBMIT</button>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="/eel.js"></script>
+
+    <script>
+        var i = 0;
+        var img = document.getElementById("img");
+        var timer = setInterval(function () {
+            i++;
+            if (i > 3) i = 1;
+            img.src = "images/" + i + ".jpg";
+
+        }, 5000)
+
+
+        /*
+        //calling pythonfunction
+        eel.my_python_method('Hello ', 'world!');
+
+        */
+      
+
+
+        //function called in python
+        eel.expose(my_javascript_function);
+        function my_javascript_function(a, b) {
+            console.log(a + b)
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+function adddetails()
+        {
+  
+    var name = document.getElementById("addcompanyname").value;
+    var value = document.getElementById("addsharevalue").value;
+    if (name != "" && value!="") {
+        console.log(name);
+        //calling python function which adds details
+        //eel.adddetails(name,value);
+       // add(name, value);
+        eel.add(name, value);
+
+    }
+    else {
+        console.log("empty")
+
+        alert("inputs should not be empty");
+        
+    }
+
+
+
+}
+
+
+
+
+
+
+function modifydetails() {
+
+    var id = document.getElementById("modifyid").value;
+    var value = document.getElementById("modifyvalue").value;
+    if (id != "" && value != "") {
+        console.log(name);
+        eel.modify(id, value);
+
+    }
+    else {
+        console.log("empty")
+
+        alert("inputs should not be empty");
+
+    }
+
+
+
+}
+
+
+
+
+
+
+function deletedetails() {
+
+    var id = document.getElementById("deleteid").value;
+   // var value = document.getElementById("modifyvalue").value;
+    if (id != "") {
+        console.log(name);
+        eel.deletedetails(id);
+    }
+    else {
+        console.log("empty")
+
+        alert("inputs should not be empty");
+
+    }
+
+
+
+}
+
+
+
+
+
+function displaydetails() {
+
+    var id = document.getElementById("displayid").value;
+    // var value = document.getElementById("modifyvalue").value;
+    if (id != "") {
+        console.log(name);
+        eel.display(id);
+    }
+    else {
+        console.log("empty")
+
+        alert("inputs should not be empty");
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+
+</html>
