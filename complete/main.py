@@ -20,27 +20,31 @@ def add(companyname,value):
 
 
 @eel.expose
-def modify(id, value):
-    message=db.updateinfo(id,value)
+def modify(name, value):
+    message=db.updateinfo(name,value)
     eel.modified(message)
-    print(id + value)
+    print(name + value)
 
 @eel.expose
 def display(name):
     result,message=db.display(name)
-    eel.display(message)
+    
+    eel.display(message,result)
     #print(id)
 
 @eel.expose
-def deletedetails(id):
-    message=db.delete(id)
+def deletedetails(name):
+    message=db.deleteinfo(name)
     print(message)
-    eel.delete(message)
-    print(id)
+    eel.deleted(message)
+    print(name)
 
 
 
-
+@eel.expose
+def characterprocess(char):
+    values,flag=db.characterprocess(char)
+    eel.characterprocessJS(values,flag)
 
 
 eel.my_javascript_function('Hello ', 'world!') 
