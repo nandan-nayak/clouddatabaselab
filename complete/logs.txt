@@ -1,0 +1,178 @@
+2020-01-09 09:15:45,598 - simple_example - INFO - connected to database
+2020-01-09 09:16:35,411 - simple_example - DEBUG - debugged
+2020-01-09 09:16:35,411 - simple_example - INFO - connected to database
+2020-01-09 09:16:35,411 - simple_example - INFO - created table
+2020-01-09 09:16:35,411 - simple_example - INFO - connected to database
+2020-01-09 09:16:35,415 - simple_example - INFO - created table
+2020-01-09 09:17:13,647 - simple_example - INFO - connected to database
+2020-01-09 09:17:40,135 - simple_example - INFO - connected to database
+2020-01-09 09:17:40,135 - simple_example - INFO - connected to database
+2020-01-09 09:19:22,315 - simple_example - DEBUG - debugged
+2020-01-09 09:19:22,331 - simple_example - INFO - connected to database
+2020-01-09 09:19:22,331 - simple_example - INFO - created table
+2020-01-09 09:19:22,331 - simple_example - INFO - connected to database
+2020-01-09 09:19:22,331 - simple_example - INFO - created table
+2020-01-09 09:19:33,717 - simple_example - INFO - connected to database
+2020-01-09 09:19:33,717 - simple_example - INFO - connected to database
+2020-01-09 09:19:58,813 - simple_example - DEBUG - debugged
+2020-01-09 09:19:58,829 - simple_example - INFO - connected to database
+2020-01-09 09:19:58,829 - simple_example - INFO - created table
+2020-01-09 09:19:58,829 - simple_example - INFO - connected to database
+2020-01-09 09:19:58,829 - simple_example - INFO - created table
+2020-01-09 09:20:12,515 - simple_example - INFO - connected to database
+2020-01-09 09:20:12,515 - simple_example - INFO - connected to database
+2020-01-09 09:20:12,656 - simple_example - INFO - updation successfull reliance60
+2020-01-09 09:43:23,611 - simple_example - DEBUG - debugged
+2020-01-09 09:43:23,627 - simple_example - INFO - connected to database
+2020-01-09 09:43:23,627 - simple_example - INFO - created table
+2020-01-09 09:43:23,631 - simple_example - INFO - connected to database
+2020-01-09 09:43:23,631 - simple_example - INFO - created table
+2020-01-09 09:43:38,197 - simple_example - INFO - connected to database
+2020-01-09 09:44:51,650 - simple_example - DEBUG - debugged
+2020-01-09 09:44:51,650 - simple_example - INFO - connected to database
+2020-01-09 09:44:51,654 - simple_example - INFO - created table
+2020-01-09 09:44:51,658 - simple_example - INFO - connected to database
+2020-01-09 09:44:51,658 - simple_example - INFO - created table
+2020-01-09 09:45:42,633 - simple_example - DEBUG - debugged
+2020-01-09 09:45:42,633 - simple_example - INFO - connected to database
+2020-01-09 09:45:42,637 - simple_example - INFO - created table
+2020-01-09 09:45:42,637 - simple_example - INFO - connected to database
+2020-01-09 09:45:42,637 - simple_example - INFO - created table
+2020-01-09 09:46:37,308 - simple_example - DEBUG - debugged
+2020-01-09 09:46:37,323 - simple_example - INFO - connected to database
+2020-01-09 09:46:37,323 - simple_example - INFO - created table
+2020-01-09 09:46:37,323 - simple_example - INFO - connected to database
+2020-01-09 09:46:37,323 - simple_example - INFO - created table
+2020-01-09 09:46:56,797 - simple_example - INFO - connected to database
+2020-01-09 09:46:59,744 - simple_example - INFO - connected to database
+2020-01-09 09:47:00,855 - simple_example - INFO - connected to database
+2020-01-09 09:47:01,060 - simple_example - INFO - connected to database
+2020-01-09 09:47:04,650 - simple_example - INFO - connected to database
+2020-01-09 09:47:04,763 - simple_example - INFO - connected to database
+2020-01-09 09:47:33,219 - simple_example - INFO - connected to database
+2020-01-09 09:47:33,375 - simple_example - INFO - connected to database
+2020-01-09 09:49:04,604 - simple_example - DEBUG - debugged
+2020-01-09 09:49:04,604 - simple_example - INFO - connected to database
+2020-01-09 09:49:04,604 - simple_example - INFO - created table
+2020-01-09 09:49:04,604 - simple_example - INFO - connected to database
+2020-01-09 09:49:04,604 - simple_example - INFO - created table
+2020-01-09 10:02:39,504 - simple_example - DEBUG - debugged
+2020-01-09 10:02:39,504 - simple_example - INFO - connected to database
+2020-01-09 10:02:39,504 - simple_example - INFO - created table
+2020-01-09 10:02:39,504 - simple_example - INFO - connected to database
+2020-01-09 10:02:39,504 - simple_example - INFO - created table
+2020-01-09 10:02:46,195 - simple_example - INFO - connected to database
+2020-01-09 10:02:46,966 - simple_example - INFO - connected to database
+2020-01-09 10:02:53,098 - simple_example - INFO - connected to database
+2020-01-09 10:02:54,297 - simple_example - INFO - connected to database
+2020-01-09 10:02:55,192 - simple_example - INFO - connected to database
+2020-01-09 10:02:55,320 - simple_example - INFO - connected to database
+2020-01-09 10:03:03,321 - simple_example - INFO - connected to database
+2020-01-09 10:03:04,325 - simple_example - INFO - connected to database
+2020-01-09 10:04:22,646 - simple_example - INFO - connected to database
+2020-01-09 10:05:40,816 - simple_example - DEBUG - debugged
+2020-01-09 10:05:40,816 - simple_example - INFO - connected to database
+2020-01-09 10:05:40,816 - simple_example - INFO - created table
+2020-01-09 10:05:40,832 - simple_example - INFO - connected to database
+2020-01-09 10:05:40,832 - simple_example - INFO - created table
+2020-01-09 10:05:50,552 - simple_example - INFO - connected to database
+2020-01-09 10:05:51,031 - simple_example - INFO - connected to database
+2020-01-09 10:05:52,438 - simple_example - INFO - connected to database
+2020-01-09 10:05:52,714 - simple_example - INFO - connected to database
+2020-01-09 10:05:52,813 - simple_example - INFO - connected to database
+2020-01-09 10:05:53,338 - simple_example - INFO - connected to database
+2020-01-09 10:05:53,452 - simple_example - INFO - connected to database
+2020-01-09 10:05:53,588 - simple_example - INFO - connected to database
+2020-01-09 10:05:54,410 - simple_example - INFO - connected to database
+2020-01-09 10:05:54,571 - simple_example - INFO - connected to database
+2020-01-09 10:05:54,721 - simple_example - INFO - connected to database
+2020-01-09 10:05:55,010 - simple_example - INFO - connected to database
+2020-01-09 10:05:55,175 - simple_example - INFO - connected to database
+2020-01-09 10:05:55,332 - simple_example - INFO - connected to database
+2020-01-09 10:05:55,591 - simple_example - INFO - connected to database
+2020-01-09 10:05:55,954 - simple_example - INFO - connected to database
+2020-01-09 10:06:00,406 - simple_example - INFO - connected to database
+2020-01-09 10:06:01,238 - simple_example - INFO - connected to database
+2020-01-09 10:06:07,674 - simple_example - INFO - connected to database
+2020-01-09 10:06:07,771 - simple_example - INFO - connected to database
+2020-01-09 10:07:01,290 - simple_example - INFO - connected to database
+2020-01-09 10:07:12,364 - simple_example - INFO - connected to database
+2020-01-09 10:07:28,527 - simple_example - INFO - connected to database
+2020-01-09 10:07:53,015 - simple_example - INFO - connected to database
+2020-01-09 10:07:54,460 - simple_example - INFO - connected to database
+2020-01-09 10:07:54,740 - simple_example - INFO - connected to database
+2020-01-09 10:08:00,562 - simple_example - INFO - connected to database
+2020-01-09 10:08:30,834 - simple_example - INFO - connected to database
+2020-01-09 10:08:32,704 - simple_example - INFO - connected to database
+2020-01-09 10:08:37,304 - simple_example - INFO - connected to database
+2020-01-09 10:08:37,695 - simple_example - INFO - connected to database
+2020-01-09 10:08:38,646 - simple_example - INFO - connected to database
+2020-01-09 10:08:39,667 - simple_example - INFO - connected to database
+2020-01-09 10:10:29,275 - simple_example - INFO - connected to database
+2020-01-09 10:10:29,386 - simple_example - INFO - connected to database
+2020-01-09 10:10:33,391 - simple_example - INFO - connected to database
+2020-01-09 10:10:33,554 - simple_example - INFO - connected to database
+2020-01-09 10:12:35,325 - simple_example - DEBUG - debugged
+2020-01-09 10:12:35,325 - simple_example - INFO - connected to database
+2020-01-09 10:12:35,325 - simple_example - INFO - created table
+2020-01-09 10:12:35,325 - simple_example - INFO - connected to database
+2020-01-09 10:12:35,325 - simple_example - INFO - created table
+2020-01-09 10:12:46,230 - simple_example - INFO - connected to database
+2020-01-09 10:12:46,428 - simple_example - INFO - connected to database
+2020-01-09 10:14:00,620 - simple_example - INFO - connected to database
+2020-01-09 10:14:01,031 - simple_example - INFO - connected to database
+2020-01-09 10:14:05,781 - simple_example - INFO - connected to database
+2020-01-09 10:14:06,280 - simple_example - INFO - connected to database
+2020-01-09 10:14:06,312 - simple_example - INFO - connected to database
+2020-01-09 10:14:06,342 - simple_example - INFO - connected to database
+2020-01-09 10:14:06,374 - simple_example - INFO - connected to database
+2020-01-09 10:14:06,403 - simple_example - INFO - connected to database
+2020-01-09 10:14:06,431 - simple_example - INFO - connected to database
+2020-01-09 10:14:06,463 - simple_example - INFO - connected to database
+2020-01-09 10:14:15,123 - simple_example - INFO - connected to database
+2020-01-09 10:14:15,325 - simple_example - INFO - connected to database
+2020-01-09 10:14:15,790 - simple_example - INFO - connected to database
+2020-01-09 10:14:15,917 - simple_example - INFO - connected to database
+2020-01-09 10:14:16,607 - simple_example - INFO - connected to database
+2020-01-09 10:14:18,052 - simple_example - INFO - connected to database
+2020-01-09 10:14:18,275 - simple_example - INFO - connected to database
+2020-01-09 10:14:30,744 - simple_example - INFO - connected to database
+2020-01-09 10:14:31,248 - simple_example - INFO - connected to database
+2020-01-09 10:14:31,280 - simple_example - INFO - connected to database
+2020-01-09 10:14:31,308 - simple_example - INFO - connected to database
+2020-01-09 10:14:31,339 - simple_example - INFO - connected to database
+2020-01-09 10:14:31,369 - simple_example - INFO - connected to database
+2020-01-09 10:14:31,401 - simple_example - INFO - connected to database
+2020-01-09 10:14:52,487 - simple_example - INFO - connected to database
+2020-01-09 10:14:52,583 - simple_example - INFO - connected to database
+2020-01-09 10:15:06,665 - simple_example - INFO - connected to database
+2020-01-09 10:15:06,780 - simple_example - INFO - connected to database
+2020-01-09 10:15:06,884 - simple_example - INFO - connected to database
+2020-01-09 10:15:07,926 - simple_example - INFO - connected to database
+2020-01-09 10:15:08,423 - simple_example - INFO - connected to database
+2020-01-09 10:15:08,455 - simple_example - INFO - connected to database
+2020-01-09 10:15:08,479 - simple_example - INFO - connected to database
+2020-01-09 10:15:08,511 - simple_example - INFO - connected to database
+2020-01-09 10:15:08,543 - simple_example - INFO - connected to database
+2020-01-09 10:15:08,571 - simple_example - INFO - connected to database
+2020-01-09 10:15:08,603 - simple_example - INFO - connected to database
+2020-01-09 10:15:11,408 - simple_example - INFO - connected to database
+2020-01-09 10:15:14,407 - simple_example - INFO - connected to database
+2020-01-09 10:15:14,905 - simple_example - INFO - connected to database
+2020-01-09 10:15:14,941 - simple_example - INFO - connected to database
+2020-01-09 10:16:03,674 - simple_example - DEBUG - debugged
+2020-01-09 10:16:03,674 - simple_example - INFO - connected to database
+2020-01-09 10:16:03,674 - simple_example - INFO - created table
+2020-01-09 10:16:03,674 - simple_example - INFO - connected to database
+2020-01-09 10:16:03,674 - simple_example - INFO - created table
+2020-01-09 10:16:12,199 - simple_example - INFO - connected to database
+2020-01-09 10:16:12,950 - simple_example - INFO - connected to database
+2020-01-09 10:16:13,268 - simple_example - INFO - connected to database
+2020-01-09 10:16:14,033 - simple_example - INFO - connected to database
+2020-01-09 10:16:19,187 - simple_example - INFO - connected to database
+2020-01-09 10:16:19,691 - simple_example - INFO - connected to database
+2020-01-09 10:16:19,716 - simple_example - INFO - connected to database
+2020-01-09 10:16:19,750 - simple_example - INFO - connected to database
+2020-01-09 10:16:19,783 - simple_example - INFO - connected to database
+2020-01-09 10:16:19,811 - simple_example - INFO - connected to database
+2020-01-09 10:16:19,843 - simple_example - INFO - connected to database
