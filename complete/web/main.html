@@ -165,6 +165,36 @@ font-size:25px;
 
 }
 
+
+.displaydiv
+{
+color:black;
+}
+
+.processdiv
+{
+
+height:200px;
+width:550px;
+margin-top:3%;
+background:green;
+color:black;
+display:none;
+
+position:absolute;
+}
+
+.processdivcontent
+{
+
+background:grey;
+cursor:pointer;
+width:550px;
+text-decoration:none;
+
+
+}
+
 </style>
 
 
@@ -236,8 +266,8 @@ font-size:25px;
         </div>
         <div class="content">
             <div style="height:15%;">
-                <label>Enter Company ID</label>
-                <input type="number" id="modifyid" required/>
+                <label>Enter Company Name</label>
+                <input type="text" id="modifyname" required/>
             </div>
             <div style="margin-top:10%;height:15%;">
 
@@ -260,8 +290,8 @@ font-size:25px;
         </div>
         <div class="content">
             <div style="height:15%;">
-                <label>Enter Company ID</label>
-                <input type="number" id="deleteid" required>
+                <label>Enter Company Name</label>
+                <input type="text" id="deletename" required>
             </div>
 
 
@@ -282,13 +312,16 @@ font-size:25px;
         <div class="content">
             <div style="height:15%;margin-top:-10%;">
                 <label>Enter Company Name</label>
-                <input type="text" id="displayname" required>
+                <input type="text" id="displayname" oninput="processcharacter();" required>
             </div>
-            <div style="height:100%;width:100%;background:white;margin-top:10%;">
+            
+            <div class="processdiv" id="processdiv"></div>
+            <div style="height:100%;width:100%;background:white;margin-top:10%;" id="displaydiv">
 
 
-
+           
             </div>
+             
 
             <button class="button" value="submit" onclick="displaydetails();">SUBMIT</button>
 
@@ -345,16 +378,13 @@ font-size:25px;
 
 
 
-
-
-
 function adddetails()
         {
   
     var name = document.getElementById("addcompanyname").value;
     var value = document.getElementById("addsharevalue").value;
     if (name != "" && value!="") {
-        console.log(name);
+       // console.log(name);
         //calling python function which adds details
         //eel.adddetails(name,value);
        // add(name, value);
@@ -379,11 +409,11 @@ function adddetails()
 
 function modifydetails() {
 
-    var id = document.getElementById("modifyid").value;
+    var name = document.getElementById("modifyname").value;
     var value = document.getElementById("modifyvalue").value;
-    if (id != "" && value != "") {
+    if (name != "" && value != "") {
         console.log(name);
-        eel.modify(id, value);
+        eel.modify(name, value);
 
     }
     else {
@@ -404,11 +434,11 @@ function modifydetails() {
 
 function deletedetails() {
 
-    var id = document.getElementById("deleteid").value;
+    var name = document.getElementById("deletename").value;
    // var value = document.getElementById("modifyvalue").value;
-    if (id != "") {
+    if (name != "") {
         console.log(name);
-        eel.deletedetails(id);
+        eel.deletedetails(name);
     }
     else {
         console.log("empty")
@@ -429,8 +459,8 @@ function displaydetails() {
 
     var name = document.getElementById("displayname").value;
     // var value = document.getElementById("modifyvalue").value;
-    if (id != "") {
-        console.log(name);
+    if (name != "") {
+        //console.log(name);
         eel.display(name);
     }
     else {
@@ -459,10 +489,10 @@ function added(message) {
 
 
 eel.expose(deleted);
-function deleted(message) {
-    alert(message);
+function deleted(message)
+{
+ alert(message);
 }
-
 
 
 eel.expose(modified);
@@ -472,8 +502,99 @@ function modified(message) {
 
 
 eel.expose(display);
-function display(message) {
+function display(message,result) {
+
+
+    var div=document.getElementById("displaydiv");
+    div.innerHTML="";
+    //alert(message);
+    if(result.length<=0)
+    {
+    
     alert(message);
+    }
+    else{
+    for(let i=0;i<result.length;i++)
+    {
+    var content=document.createElement("div");
+    content.setAttribute("class","displaydiv");
+    var h6=document.createElement("h6");
+    h6.innerHTML="company id = "+result[i][0];
+    content.appendChild(h6);
+    
+    var h6=document.createElement("h6");
+    h6.innerHTML="company name = "+result[i][1];
+    h6.setAttribute("style","margin-top:-8%;");
+    content.appendChild(h6);
+    
+    var h6=document.createElement("h6");
+    h6.innerHTML="company share value = "+result[i][2];
+    h6.setAttribute("style","margin-top:-8%;");
+    content.appendChild(h6);
+    
+    console.log("result os",result[i][0]);
+    div.appendChild(content);
+
+    }
+    
+    }
+    }
+    
+    
+    
+    
+    function processcharacter()
+    {
+    
+    
+    var char=document.getElementById("displayname").value;
+    console.log(char);
+    eel.characterprocess(char);
+    
+    
+    
+    }
+    
+    
+    
+    eel.expose(characterprocessJS)
+    function characterprocessJS(values,flag)
+    {
+    
+    var div=document.getElementById("processdiv");
+    div.innerHTML="";
+    div.style.display="block";
+    if(flag!=0)
+    {
+    for(let i=0;i<values.length;i++)
+    {
+    
+    var anchor=document.createElement("div");
+    anchor.setAttribute("class","processdivcontent");
+    anchor.setAttribute("onclick","choosecompany(this);");
+    anchor.innerHTML=values[i];
+    div.appendChild(anchor);
+   // div.appendChild("BR");
+    
+    }
+    
+    }
+    
+    else
+    {
+     div.innerHTML="";
+    }
+            console.log(values,flag);
+    
+    
+    }
+
+function choosecompany(content)
+{
+console.log("choosed ",content)
+var input=document.getElementById("displayname");
+input.value=content.innerHTML.toString();
+
 }
 
     </script>
