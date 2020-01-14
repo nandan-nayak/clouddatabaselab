@@ -1,5 +1,5 @@
 import eel
-import mysqldbconnection as db
+import sqlitedbconnection as db
 eel.init('web')
 options = {
     'mode': "chrome", #or "chrome-app",
@@ -15,7 +15,7 @@ def add(companyname,value):
     
     message=db.insertvalues(companyname,value)
     eel.added(message)
-    print(companyname+value)
+    #print(companyname+value)
     
 
 
@@ -23,7 +23,7 @@ def add(companyname,value):
 def modify(name, value):
     message=db.updateinfo(name,value)
     eel.modified(message)
-    print(name + value)
+    #print(name + value)
 
 @eel.expose
 def display(name):
@@ -35,9 +35,9 @@ def display(name):
 @eel.expose
 def deletedetails(name):
     message=db.deleteinfo(name)
-    print(message)
+    #print(message)
     eel.deleted(message)
-    print(name)
+    #print(name)
 
 
 
