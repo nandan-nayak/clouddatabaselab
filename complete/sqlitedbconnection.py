@@ -1,4 +1,13 @@
-﻿import sqlite3
+"""
+This File contains all the DataBase actions which is imported in the "main.py"
+
+This File imports 2 custom files
+1: custom exception to handle the exception "CompanyNotFound" , "NegativeShareValue"
+2: logconfig to create logs
+"""
+
+
+import sqlite3
 from sqlite3 import Error
 import customexception as excep
 import logconfig as log
@@ -12,13 +21,19 @@ log.logger.debug("debugged")
 #cursor=None
 
 def connect():
+    """
+    connects the database with the name specified in "DBNAME"
+    it returns cursor and connection object 
+    """
+    
+    
     con=None
     cursor=None
     
     try:
         con = sqlite3.connect(DBNAME)
         cursor= con.cursor()
-        
+        #create log
         log.logger.info("connected to database")
         #print("successfully connected to DB");
     except Error:
@@ -28,6 +43,13 @@ def connect():
 
 
 def createtable():
+    """
+    function creates the table  by connecting to database first
+    
+    if table exists then it willnot be created
+    
+    """
+    
     con,cursor=connect()
     try:
         cursor.execute(createtablesql)
@@ -42,14 +64,20 @@ def createtable():
 
 
 def insertvalues(companyname,sharevalue):
+    """
+    
+    inserts the value to the database and returns the message
+    """
+    
+    
     sql="insert into companyinfo(id,companyname,sharevalue) values(null,'"+companyname+"',"+str(sharevalue)+")";
-    con,cursor=connect()
+    con,cursor=connect() #connect to DB
     #print(sql)
     message=""
     try:
         #print("inserted")
         if float(sharevalue)<=0:
-            raise excep.NegativeShareValue
+            raise excep.NegativeShareValue #raise exception if sharevalue is negative
         cursor.execute(sql)
         con.commit()
         
@@ -69,6 +97,10 @@ def insertvalues(companyname,sharevalue):
     return message
 
 def deleteinfo(name):
+    """
+    deletes information from database
+    
+    """
     sql="delete from companyinfo where companyname='"+name+"'";
     con,cursor=connect()
     message=""
@@ -79,7 +111,7 @@ def deleteinfo(name):
     try:
         #print("deleted")
         if len(displayresult[0])<=0:
-            raise excep.CompanyNameNotFound
+            raise excep.CompanyNameNotFound #raise expception if company not found 
             
         cursor.execute(sql)
         #print("result of delete is ",dir(result))
@@ -104,6 +136,10 @@ def deleteinfo(name):
 
 
 def updateinfo(name,sharevalue):
+    """
+    updates the sharevalue of the company
+    
+    """
     sql="update companyinfo set sharevalue="+str(sharevalue)+" where companyname='"+name+"'";
     con,cursor=connect();
     message=""
@@ -136,6 +172,12 @@ def updateinfo(name,sharevalue):
     return message
 
 def display(name):
+    
+    """
+    
+    displays the company details provide company name
+    """
+    
     sql="select * from  companyinfo where companyname='"+str(name)+"'";
     con,cursor=connect();
     result=0
@@ -164,6 +206,11 @@ def display(name):
 
 
 def characterprocess(char):
+    """
+    returns the company name provided characters related to company name
+    
+    
+    """
     sql="SELECT companyname FROM companyinfo WHERE companyname LIKE '"+char+"%';"
     con,cursor=connect();
     result=0
