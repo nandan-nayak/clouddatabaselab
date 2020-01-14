@@ -1,2 +1,2 @@
 eel
-sqlite3==2.6.0
+sqlite3
