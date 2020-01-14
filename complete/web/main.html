@@ -368,7 +368,7 @@ text-decoration:none;
         //function called in python
         eel.expose(my_javascript_function);
         function my_javascript_function(a, b) {
-            console.log(a + b)
+            //console.log(a + b)
         }
 
 
@@ -392,7 +392,7 @@ function adddetails()
 
     }
     else {
-        console.log("empty")
+      //  console.log("empty")
 
         alert("inputs should not be empty");
         
@@ -412,12 +412,12 @@ function modifydetails() {
     var name = document.getElementById("modifyname").value;
     var value = document.getElementById("modifyvalue").value;
     if (name != "" && value != "") {
-        console.log(name);
+       // console.log(name);
         eel.modify(name, value);
 
     }
     else {
-        console.log("empty")
+       // console.log("empty")
 
         alert("inputs should not be empty");
 
@@ -437,11 +437,11 @@ function deletedetails() {
     var name = document.getElementById("deletename").value;
    // var value = document.getElementById("modifyvalue").value;
     if (name != "") {
-        console.log(name);
+       // console.log(name);
         eel.deletedetails(name);
     }
     else {
-        console.log("empty")
+       // console.log("empty")
 
         alert("inputs should not be empty");
 
@@ -464,7 +464,7 @@ function displaydetails() {
         eel.display(name);
     }
     else {
-        console.log("empty")
+      //  console.log("empty")
 
         alert("inputs should not be empty");
 
@@ -532,7 +532,7 @@ function display(message,result) {
     h6.setAttribute("style","margin-top:-8%;");
     content.appendChild(h6);
     
-    console.log("result os",result[i][0]);
+    //console.log("result os",result[i][0]);
     div.appendChild(content);
 
     }
@@ -548,7 +548,7 @@ function display(message,result) {
     
     
     var char=document.getElementById("displayname").value;
-    console.log(char);
+    //console.log(char);
     eel.characterprocess(char);
     
     
@@ -584,16 +584,18 @@ function display(message,result) {
     {
      div.innerHTML="";
     }
-            console.log(values,flag);
+           // console.log(values,flag);
     
     
     }
 
 function choosecompany(content)
 {
-console.log("choosed ",content)
+//console.log("choosed ",content)
 var input=document.getElementById("displayname");
 input.value=content.innerHTML.toString();
+var div=document.getElementById("processdiv");
+div.style.display="none";
 
 }
 
