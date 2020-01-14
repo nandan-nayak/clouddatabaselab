@@ -22,7 +22,7 @@ def connect():
         log.logger.info("connected to database")
         #print("successfully connected to DB");
     except Error:
-        print(Error)
+        #print(Error)
         log.logger.error("database connection failed")
     return con,cursor
 
@@ -34,7 +34,7 @@ def createtable():
         con.commit()
         log.logger.info("created table")
     except Error:
-        print(Error)
+        #print(Error)
         log.logger.error("database connection failed")
         con.rollback()
     finally:
@@ -48,7 +48,7 @@ def insertvalues(companyname,sharevalue):
     message=""
     try:
         #print("inserted")
-        if int(sharevalue)<=0:
+        if float(sharevalue)<=0:
             raise excep.NegativeShareValue
         cursor.execute(sql)
         con.commit()
@@ -59,7 +59,8 @@ def insertvalues(companyname,sharevalue):
         message="share value should be positive"
         log.logger.error("negative share value inserted for "+companyname)
     except Error as e:
-        print(e)
+        #print(e)
+        message="insertion failed"
         log.logger.error("insertion failed for "+companyname)
         con.rollback()
     finally:
@@ -90,7 +91,7 @@ def deleteinfo(name):
         log.logger.error("company "+name+" not found for deletion")
         message="company not found"
     except Error as e:
-        print(e)
+        #print(e)
         log.logger.error("deletion  failed")
         con.rollback();
         message="failed to delete ... "
@@ -107,13 +108,13 @@ def updateinfo(name,sharevalue):
     con,cursor=connect();
     message=""
     displayresult=display(name)
-    print("display ",displayresult[0])
+    #print("display ",displayresult[0])
    
     try:
         if len(displayresult[0])<=0:
-            print("not found")
+            #print("not found")
             raise excep.CompanyNameNotFound
-        if int(sharevalue)<=0:
+        if float(sharevalue)<=0:
             raise excep.NegativeShareValue
         #print("updated")
         cursor.execute(sql)
@@ -127,7 +128,7 @@ def updateinfo(name,sharevalue):
         message="share value can't be negative"
         log.logger.error("negative share value for "+name)
     except Error as e:
-        print(e)
+        #print(e)
         con.rollback();
         message="updation Failed"
     finally:
@@ -150,7 +151,8 @@ def display(name):
             message="company found"
     except Error as e:
         #print("display error")
-        print(e);con.rollback();
+        #print(e);
+        con.rollback();
         log.logger.error("problem in display")
         message="something went wrong..."
     finally:
@@ -175,7 +177,7 @@ def characterprocess(char):
                 #con.commit()
             flag=1
     except Error as e:
-        print(e)
+        #print(e)
         log.logger.error("problem in characterprocess")
     finally:
         con.close();
@@ -183,7 +185,7 @@ def characterprocess(char):
     return result,flag
 
 #connect();
-createtable()
+#createtable()
 '''
 #insertvalues('adani',120.5)
 result=display(1)
