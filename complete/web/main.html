@@ -347,6 +347,9 @@ text-decoration:none;
     <script type="text/javascript" src="/eel.js"></script>
 
     <script>
+	    
+	    // image slider
+	    
         var i = 0;
         var img = document.getElementById("img");
         var timer = setInterval(function () {
@@ -371,29 +374,27 @@ text-decoration:none;
             //console.log(a + b)
         }
 
+// image slider ends
 
 
 
 
 
-
-
+// takes input from the user and send it to python "main.py"
 function adddetails()
         {
   
     var name = document.getElementById("addcompanyname").value;
     var value = document.getElementById("addsharevalue").value;
     if (name != "" && value!="") {
-       // console.log(name);
-        //calling python function which adds details
-        //eel.adddetails(name,value);
-       // add(name, value);
-        eel.add(name, value);
+       
+	    // call python function from JavaScript with name "add"
+	    eel.add(name, value);
 
     }
     else {
       //  console.log("empty")
-
+	// if used inputs empty values
         alert("inputs should not be empty");
         
     }
@@ -406,7 +407,7 @@ function adddetails()
 
 
 
-
+// takes input from user to modify the details and send it python
 function modifydetails() {
 
     var name = document.getElementById("modifyname").value;
@@ -430,7 +431,7 @@ function modifydetails() {
 
 
 
-
+// takes input from user to delete the details and send it python
 
 function deletedetails() {
 
@@ -452,7 +453,7 @@ function deletedetails() {
 }
 
 
-
+// takes input from user to display the details and send it python
 
 
 function displaydetails() {
@@ -475,10 +476,21 @@ function displaydetails() {
 }
 
 
+// takes input from user to display the details and send it python
+    function processcharacter()
+    {
+    
+    
+    var char=document.getElementById("displayname").value;
+    //console.log(char);
+    eel.characterprocess(char);
+    
+    
+    
+    }
 
 
-
-
+// recieve message from python and display
 eel.expose(added);
 function added(message) {
     alert(message);
@@ -487,20 +499,20 @@ function added(message) {
 
 
 
-
+// recieve message from python and display
 eel.expose(deleted);
 function deleted(message)
 {
  alert(message);
 }
 
-
+// recieve message from python and display
 eel.expose(modified);
 function modified(message) {
     alert(message);
 }
 
-
+// recieve message from python and display
 eel.expose(display);
 function display(message,result) {
 
@@ -541,19 +553,8 @@ function display(message,result) {
     }
     
     
+    // recieve message from python and display for character by character
     
-    
-    function processcharacter()
-    {
-    
-    
-    var char=document.getElementById("displayname").value;
-    //console.log(char);
-    eel.characterprocess(char);
-    
-    
-    
-    }
     
     
     
@@ -589,6 +590,9 @@ function display(message,result) {
     
     }
 
+	    
+	    // function executed when user clicks on the company name while searching for company
+	   
 function choosecompany(content)
 {
 //console.log("choosed ",content)
