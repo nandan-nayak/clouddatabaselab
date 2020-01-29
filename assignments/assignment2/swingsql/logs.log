@@ -1,0 +1,51 @@
+2020-01-22 16:54:55 INFO  MySQLDBConnection:41 - connection to DB successfull
+2020-01-22 16:54:55 INFO  MySQLDBConnection:163 - display  successfull Tata
+2020-01-22 17:05:44 INFO  MSSQLDBConnection:46 - connection to DB successfull
+2020-01-22 17:05:44 INFO  MSSQLDBConnection:122 - Insertion successfull for Input infosys 35.0
+2020-01-22 17:08:40 INFO  MSSQLDBConnection:46 - connection to DB successfull
+2020-01-22 17:08:40 INFO  MSSQLDBConnection:122 - Insertion successfull for Input Tata 39.0
+2020-01-22 17:08:55 INFO  MSSQLDBConnection:46 - connection to DB successfull
+2020-01-22 17:08:55 ERROR MSSQLDBConnection:213 - SQLException while Display for input Tata
+2020-01-22 17:08:55 ERROR MSSQLDBConnection:214 - com.microsoft.sqlserver.jdbc.SQLServerException: Invalid column name 'companyname'.
+2020-01-22 17:10:43 INFO  MSSQLDBConnection:46 - connection to DB successfull
+2020-01-22 17:10:43 ERROR MSSQLDBConnection:213 - SQLException while Display for input Tata
+2020-01-22 17:10:43 ERROR MSSQLDBConnection:214 - com.microsoft.sqlserver.jdbc.SQLServerException: The requested operation is not supported on forward only result sets.
+2020-01-22 17:11:41 INFO  MSSQLDBConnection:46 - connection to DB successfull
+2020-01-22 17:11:41 INFO  MSSQLDBConnection:207 - Display successfull for Input Tata
+2020-01-22 17:11:49 INFO  MSSQLDBConnection:46 - connection to DB successfull
+2020-01-22 17:11:49 INFO  MSSQLDBConnection:207 - Display successfull for Input mah
+2020-01-23 17:22:18 ERROR MSSQLDBConnection:53 - SQLException while connecting
+2020-01-23 17:22:18 ERROR MSSQLDBConnection:54 - com.microsoft.sqlserver.jdbc.SQLServerException: Login failed for user 'root'. Reason: The account is disabled. ClientConnectionId:b5bd8803-dbca-4030-8aae-52dc651f86eb
+2020-01-23 17:22:20 ERROR MSSQLDBConnection:53 - SQLException while connecting
+2020-01-23 17:22:20 ERROR MSSQLDBConnection:54 - com.microsoft.sqlserver.jdbc.SQLServerException: Login failed for user 'root'. Reason: The account is disabled. ClientConnectionId:ec8b149f-54e4-4d28-b923-5aa70f265bc1
+2020-01-23 17:25:12 INFO  MSSQLDBConnection:48 - connection to DB successfull
+2020-01-23 17:25:12 ERROR MSSQLDBConnection:215 - SQLException while Display for input Mahindra
+2020-01-23 17:25:12 ERROR MSSQLDBConnection:216 - com.microsoft.sqlserver.jdbc.SQLServerException: Invalid object name 'nandan_companyinfo'.
+2020-01-23 17:26:26 INFO  MSSQLDBConnection:48 - connection to DB successfull
+2020-01-23 17:26:26 INFO  MSSQLDBConnection:209 - Display successfull for Input Mahindra
+2020-01-23 17:27:57 INFO  MSSQLDBConnection:48 - connection to DB successfull
+2020-01-23 17:27:57 INFO  MSSQLDBConnection:209 - Display successfull for Input Mahindra
+2020-01-23 17:28:59 INFO  MSSQLDBConnection:48 - connection to DB successfull
+2020-01-23 17:28:59 INFO  MSSQLDBConnection:209 - Display successfull for Input Mahindra
+2020-01-23 18:00:24 INFO  MSSQLDBConnection:62 - connection to DB successfull
+2020-01-23 18:00:24 INFO  MSSQLDBConnection:234 - Display successfull for Input Mahindra
+2020-01-28 09:04:39 INFO  MSSQLDBConnection:62 - connection to DB successfull
+2020-01-28 09:04:39 INFO  MSSQLDBConnection:234 - Display successfull for Input Tata
+2020-01-28 09:04:55 INFO  MSSQLDBConnection:62 - connection to DB successfull
+2020-01-28 09:04:55 ERROR MSSQLDBConnection:154 - SQLException while insertion for input Tata 300.0
+2020-01-28 09:04:55 ERROR MSSQLDBConnection:155 - com.microsoft.sqlserver.jdbc.SQLServerException: Invalid column name 'name'.
+2020-01-28 09:05:22 INFO  MSSQLDBConnection:62 - connection to DB successfull
+2020-01-28 09:05:22 ERROR MSSQLDBConnection:154 - SQLException while insertion for input Bon 34.0
+2020-01-28 09:05:22 ERROR MSSQLDBConnection:155 - com.microsoft.sqlserver.jdbc.SQLServerException: Invalid column name 'name'.
+2020-01-28 09:07:01 INFO  MSSQLDBConnection:62 - connection to DB successfull
+2020-01-28 09:07:01 INFO  MSSQLDBConnection:234 - Display successfull for Input Reliance
+2020-01-28 09:20:41 INFO  MSSQLDBConnection:62 - connection to DB successfull
+2020-01-28 09:20:41 ERROR MSSQLDBConnection:178 - SQLException while insertion for input Tata 30.0
+2020-01-28 09:20:41 ERROR MSSQLDBConnection:179 - com.microsoft.sqlserver.jdbc.SQLServerException: Invalid column name 'name'.
+2020-01-28 09:22:28 INFO  MSSQLDBConnection:62 - connection to DB successfull
+2020-01-28 09:22:29 ERROR MSSQLDBConnection:179 - SQLException while insertion for input Tata 34.0
+2020-01-28 09:22:29 ERROR MSSQLDBConnection:180 - com.microsoft.sqlserver.jdbc.SQLServerException: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_nandan_company_value_nandan_company_info". The conflict occurred in database "nandan_sharemarket", table "dbo.nandan_company_info", column 'companyname'.
+2020-01-28 10:39:56 INFO  MSSQLDBConnection:62 - connection to DB successfull
+2020-01-28 10:39:56 INFO  MSSQLDBConnection:179 - Insertion successfull for Input Tata 30.0
+2020-01-28 16:25:38 INFO  MSSQLDBConnection:62 - connection to DB successfull
+2020-01-28 16:25:38 INFO  MSSQLDBConnection:265 - Display successfull for Input Reliance
