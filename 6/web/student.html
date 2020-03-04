@@ -1,0 +1,299 @@
+<html>
+<head>
+<!--<script type="text/javascript" src="validate.js"></script>-->
+</head>
+<body>
+
+
+<table cellpadding="2" width="100%" height="100%" bgcolor="99FFFF" align="center"
+cellspacing="2">
+
+<tr>
+<td colspan=2>
+<center><font size=4><b>ADD STUDENT </b></font></center>
+</td>
+</tr>
+
+<tr>
+<td>Name</td>
+<td><input type="text" name="name" id="studentname" size="30"></td>
+</tr>
+
+<tr>
+<td>Class</td>
+<td><input type="text" name="class" id="studentclass"
+size="30"></td>
+</tr>
+<tr>
+<td>Email</td>
+<td><input type="text" name="email" id="parentemail" size="30"></td>
+</tr>
+<tr>
+<td>Year</td>
+<td><input type="text" name="year" id="year" size="30"></td>
+</tr>
+
+<tr>
+<td>Roll No</td>
+<td><input type="text" name="RollNo"
+id="studentRollNo" size="30"></td>
+</tr>
+
+
+<td><input type="reset"></td>
+<td colspan="2"><input type="button" onclick="addStudent();" value="Submit Form" /></td>
+</tr>
+</table>
+
+<table cellpadding="2" width="100%" height="100%" bgcolor="99FFFF" align="center"
+cellspacing="2">
+
+<tr>
+<td colspan=2>
+<center><font size=4><b>ADD TEACHER </b></font></center>
+</td>
+</tr>
+
+<tr>
+<td>Name</td>
+<td><input type="text" name=textnames id="teachername" size="30"></td>
+</tr>
+
+<tr>
+<td>Teacher_id</td>
+<td><input type="text" name="Teacher_id" id="teacherrollno"
+size="30"></td>
+</tr>
+<tr>
+<td>Subject</td>
+<td><input type="text" name="subject" id="teachersubject" size="30"></td>
+</tr>
+
+<tr>
+<td>Type</td>
+<td><select name="Type" id="teachertype">
+<option value="-1" selected>select..</option>
+<option value="R">R</option>
+<option value="P">P</option>
+
+</select></td>
+</tr>
+
+
+<td><input type="reset"></td>
+<td colspan="2"><input type="button" onclick="addTeacher();" value="Submit Form" /></td>
+</tr>
+</table>
+
+<table cellpadding="2" width="100%" height="100%" bgcolor="99FFFF" align="center"
+cellspacing="2">
+
+<tr>
+<td colspan=2>
+<center><font size=4><b>ADD SUBJECT </b></font></center>
+</td>
+</tr>
+
+<tr>
+<td>Name</td>
+<td><input type="text" name=textnames id="subjectname" size="30"></td>
+</tr>
+
+<tr>
+<td>Class</td>
+<td><input type="text" name="class" id="subjectclass"
+size="30"></td>
+</tr>
+<tr>
+<td>Subjectcode</td>
+<td><input type="text" name="subject" id="subjectcode" size="30"></td>
+</tr>
+
+
+
+<td><input type="reset"></td>
+<td colspan="2"><input type="button" onclick="addSubject();" value="Submit Form" /></td>
+</tr>
+</table>
+
+<table cellpadding="2" width="100%" height="100%" bgcolor="99FFFF" align="center"
+cellspacing="2">
+
+<tr>
+<td colspan=2>
+<center><font size=4><b>SEARCHING BASED ON CLASS </b></font></center>
+</td>
+</tr>
+
+<tr>
+<td>Class</td>
+<td><input type="text" name="class" id="searchstudentclass" size="30"></td>
+</tr>
+<tr><td>
+<label for="story"></label>
+</td><td>
+<textarea id="displaystudentclass" name="story"
+          rows="10" cols="50">
+
+</textarea></td>
+</tr>
+<tr>
+<td><input type="reset"></td>
+<td colspan="2"><input type="button" onclick="searchClass();" value="Submit Form" /></td>
+</tr>
+</table>
+
+<table cellpadding="2" width="100%" height="100%" bgcolor="99FFFF" align="center"
+cellspacing="2">
+
+<tr>
+<td colspan=2>
+<center><font size=4><b>AVERAGE MARKS SCORED BY STUDENT </b></font></center>
+</td>
+</tr>
+
+<tr>
+<td>Roll No</td>
+<td><input type="text" name="rollno" id="averagerollno" size="30"></td>
+</tr>
+<tr><td>
+<label for="story"></label>
+</td><td>
+<textarea id="story" name="story"
+          rows="10" cols="50">
+
+</textarea></td>
+</tr>
+<tr>
+<td><input type="reset"></td>
+<td colspan="2"><input type="button" onclick="averageStudent();" value="Submit Form" /></td>
+</tr>
+</table>
+
+<table cellpadding="2" width="100%" height="100%" bgcolor="99FFFF" align="center"
+cellspacing="2">
+
+<tr>
+<td colspan=2>
+<center><font size=4><b>HIGHEST MARK IN EACH SUBJECT </b></font></center>
+</td>
+</tr>
+
+<tr>
+<td>Class</td>
+<td><input type="text" name="class" id="highestclass" size="30"></td>
+</tr>
+<tr><td>
+<label for="story"></label>
+</td><td>
+<textarea id="story" name="story"
+          rows="10" cols="50">
+
+</textarea></td>
+</tr>
+<tr>
+<td><input type="reset"></td>
+<td colspan="2"><input type="button" onclick="highestMark();" value="Submit Form" /></td>
+</tr>
+</table>
+    <script type="text/javascript" src="/eel.js"></script>
+
+<script>
+    eel.expose(added);
+    function added(message) {
+
+        alert(message);
+    }
+
+
+    function addStudent()
+    {
+
+        
+        name = document.getElementById("studentname").value;
+        rollno = document.getElementById("studentRollNo").value;
+        std = document.getElementById("studentclass").value;
+        email = document.getElementById("parentemail").value;
+        year = document.getElementById("year").value;
+       // alert(document.getElementById("studentname").value);
+        // console.log(document.getElementById("studentname").value);
+
+
+        if (name.length != 0 && rollno.length != 0 && std.length != 0 && email.length != 0 && year.length!=0) {
+            eel.addStudentDetails(name,rollno,std,email,year);
+
+        }
+        else {
+            alert("values cannot  be empty");
+        }
+
+    }
+    function addTeacher() {
+
+        name = document.getElementById("teachername").value;
+        rollno = document.getElementById("teacherrollno").value;
+        sub = document.getElementById("teachersubject").value;
+        type = document.getElementById("teachertype");
+        var typevalue = type.options[type.selectedIndex].value;
+        if (name.length != 0 && rollno.length != 0 && sub.length != 0 && type.length != 0) {
+            eel.addTeacherDetails(name, rollno, sub, type);
+
+        }
+        else {
+            alert("values cannot  be empty");
+        }
+
+
+    }
+    function addSubject() {
+
+        name = document.getElementById("subjectname").value;
+        std = document.getElementById("subjectclass").value;
+        code = document.getElementById("subjectcode").value;
+        if (name.length != 0 && std.length != 0 && code.length != 0 ) {
+            eel.addSubjectDetails(name, std, code);
+
+        }
+        else {
+            alert("values cannot  be empty");
+        }
+    }
+    function searchClass() {
+
+        std = document.getElementById("searchstudentclass").value;
+        if (std.length != 0) {
+            eel.displayStudent(std);
+
+        }
+        else {
+            alert("values cannot  be empty");
+        }
+    }
+    function averageStudent() {
+
+        roll = document.getElementById("averagerollno").value;
+        if (roll.length != 0) {
+            eel.displayAverage(roll);
+
+        }
+        else {
+            alert("values cannot  be empty");
+        }
+
+    }
+
+    function highestMark() {
+
+        std = document.getElementById("highestclass").value;
+        if (std.length != 0) {
+            eel.displayAverage(std);
+
+        }
+        else {
+            alert("values cannot  be empty");
+        }
+    }
+
+</script>
+</body>
+</html>
